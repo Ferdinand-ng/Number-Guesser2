@@ -2,7 +2,7 @@ const disp = document.querySelector("#disp")
 const inp = document.querySelector("#inp")
 const butt = document.querySelector("#butt")
 const decl = document.querySelector("#decl")
-let rand = Math.floor(Math.random() *99)+2
+let rand = Math.floor(Math.random() *100)+1
 let tries = 10
 const guessCount = document.querySelector("#guess-count")
 const guessSlots = [
@@ -18,14 +18,12 @@ const guessSlots = [
     document.querySelector("#guess-ten")
 ];
 
-
 butt.addEventListener("click", function() {
 function guesser(){
         tries--
         guessCount.innerHTML = tries
         guessSlots[10-tries-1].textContent = guess; 
 }
-
     const guess = Number(inp.value);
     disp.innerHTML = guess
       disp.innerHTML = guess;
@@ -45,6 +43,7 @@ function guesser(){
         guesser()
         disp.style.backgroundColor = "yellowgreen"
         decl.innerHTML = "CORRECT GUESS!"
+         fireConfetti() 
         disp.classList.remove("shake");
             butt.onclick = function(){
             location.reload()
@@ -95,4 +94,23 @@ inp.addEventListener("keypress", function(e) {
         butt.click();
     }
 });
+function fireConfetti() {
+    confetti({
+        particleCount: 200,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0, y: 0.6 }
+    });
+    confetti({
+        particleCount: 200,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1, y: 0.6 }
+    });
+    confetti({
+    particleCount: 150,
+    spread: 200,
+    origin: { y: 0.6 }
+});
+}
 
