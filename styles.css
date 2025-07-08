@@ -1,0 +1,186 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    grid-template-columns: 2fr auto;
+    grid-template-rows: 1fr;
+    place-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    user-select: none;
+
+}
+.oouu{
+    font-size: 2rem;
+    text-align: center;
+    background-color: #f4f4f4;
+    width: fit-content ;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.582) inset;
+    min-width: 50px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.205);
+}
+#guesses{
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.205);
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        padding: 30px;
+        border-radius: 10px;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        transition: 400ms;
+}
+#disp{
+    height: 200px;
+    width: 70%;
+    margin-bottom: 5%;
+    background-color: #f4f4f4;
+    border-radius: 20px;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.342));
+}
+.wrong{
+     border: 2px solid red;
+     transition: 300ms;
+}
+.correct{
+    border: 2px solid yellowgreen;
+    transition: 300ms;
+}
+.shake{
+        animation: shake 300ms ease-out ;
+        border: 2px solid red;
+}
+@keyframes shake{
+    50%{
+        transform: translateX(10px);
+    }
+    70%{
+           transform: translateX(-10px);
+    }
+    100%{
+        transform: translateX(0px);
+    }
+}
+input{
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1rem;
+    border: none;
+    box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.194) inset;
+    border-radius: 10px;
+    margin-bottom: 5%;
+    outline: none;
+}
+#butt{
+    width: 30%;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: aquamarine;
+    text-transform: uppercase;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 1.5rem;
+        filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.251));
+        transition: 200ms;
+}
+#bbNo{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+#dark-toggle{
+     width: 30%;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: beige;
+    margin-top: 10px;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 1.5rem;
+        filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.251));
+        transition: 200ms;
+}
+button:hover{
+    transform: scale(1.1);
+    transition: 200ms;
+}
+button:active{
+    transform: scale(1);
+    transition: 200ms;
+}
+
+@media (max-width: 1256px) {
+    body{
+        flex-direction: column-reverse;
+        gap: 5px;
+        align-items: center;
+        justify-content: center;
+    }
+    .container{
+        width: fit-content;
+        justify-content: center;
+        align-items: center;
+
+     }
+     #bbNo{
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+     }
+}
+@media (max-width: 680px){
+    body{
+        padding: 20px;
+    }
+    #disp{
+        font-size: 1.5rem;
+    }
+    #butt{
+        font-size: 1rem;
+    }
+         #bbNo{
+            flex-wrap: wrap;
+     }
+    #guesses{
+        max-width: 100vw;
+    }
+    input{
+        font-size: 0.7rem;
+    }
+    #guessHead{
+        font-size: 1.5rem;
+    }
+}
