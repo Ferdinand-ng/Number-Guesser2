@@ -13,7 +13,7 @@ body{
     place-items: center;
     min-height: 100vh;
     background-color: #f4f4f4;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: "Open Sans", sans-serif;
     user-select: none;
 
 }
@@ -21,7 +21,6 @@ body{
     font-size: 2rem;
     text-align: center;
     background-color: #f4f4f4;
-    width: fit-content ;
     padding: 10px;
     border-radius: 10px;
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.582) inset;
@@ -30,6 +29,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family:"Chakra Petch", sans-serif;
 }
 .container{
     display: flex;
@@ -68,6 +68,7 @@ body{
     text-align: center;
     padding: 20px;
     filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.342));
+    font-family:"Chakra Petch", sans-serif;
 }
 .wrong{
      border: 2px solid red;
@@ -96,8 +97,8 @@ input{
     width: 50%;
     padding: 10px;
     text-align: center;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 1rem;
+    font-family: "Chakra Petch", sans-serif;
+    font-size: 1.4rem;
     border: none;
     box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.194) inset;
     border-radius: 10px;
@@ -153,34 +154,52 @@ button:active{
         width: fit-content;
         justify-content: center;
         align-items: center;
+        /* max-width: 967vw; */
+        min-width: 80vw;
 
-     }
+    }
+     
      #bbNo{
         flex-direction: row;
         justify-content: center;
         align-items: center;
+ 
      }
-}
+     .oouu{
+        width: 30px;
+     }
+    }
 @media (max-width: 680px){
     body{
         padding: 20px;
     }
     #disp{
-        font-size: 1.5rem;
+        font-size: 1.3rem;
+        font-weight: 700;
     }
     #butt{
+        font-size: 0.6rem;
+    }
+    .oouu{
         font-size: 1rem;
+        padding: 2px;
+        height: 30px;
+        width: 30px;
     }
          #bbNo{
             flex-wrap: wrap;
+            gap: 5px;
+            max-width: 90%;
      }
     #guesses{
-        max-width: 100vw;
+        max-width: 80vw;
+        padding: 5px;
     }
     input{
         font-size: 0.7rem;
     }
     #guessHead{
         font-size: 1.5rem;
+        display: none;
     }
 }
