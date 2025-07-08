@@ -18,6 +18,8 @@ const guessSlots = [
     document.querySelector("#guess-ten")
 ];
 
+// document.getElementById("debug").innerHTML = rand
+
 butt.addEventListener("click", function() {
 function guesser(){
         tries--
@@ -76,7 +78,7 @@ function guesser(){
         return
     }
 
-    if(tries === 0){
+    if(tries === 0 && guess !== rand){
         inp.disabled = true
         butt.onclick = function(){
             location.reload()
