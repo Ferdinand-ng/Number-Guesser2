@@ -2,8 +2,18 @@ const disp = document.querySelector("#disp")
 const inp = document.querySelector("#inp")
 const butt = document.querySelector("#butt")
 const decl = document.querySelector("#decl")
-let rand = Math.floor(Math.random() *100)+1
+
+function secureRandom100() {
+    let array = new Uint32Array(1);
+    crypto.getRandomValues(array);
+    return (array[0] % 100) + 1; // maps to 1-100
+}
+
+
+// let rand = Math.floor(Math.random() *100)+1
+let rand = secureRandom100()
 let tries = 10
+const progressBar = document.getElementById("progress-bar");
 const guessCount = document.querySelector("#guess-count")
 const guessSlots = [
     document.querySelector("#guess-one"),
@@ -18,18 +28,37 @@ const guessSlots = [
     document.querySelector("#guess-ten")
 ];
 
+let oddCount = document.querySelector("#odds")
+let upperLimit  =0
+let lowerLimit =0
 // document.getElementById("debug").innerHTML = rand
 
+//SUBMIT BUTTON EVENTS
 butt.addEventListener("click", function() {
+    //TRACK AND LOG GUESSES
 function guesser(){
         tries--
         guessCount.innerHTML = tries
         guessSlots[10-tries-1].textContent = guess; 
 }
+
+
+
+
+//ODDS CALCULATOR
+ function oddDiv(){
+    if(upperLimit !==0 && lowerLimit !==0){
+        const differ =  Math.abs((upperLimit - rand) + ( rand- lowerLimit)) - 1
+        const odd = Math.round((1/differ) * 10000) / 100;
+        oddCount.innerHTML = "ODDS: " + odd + "%"
+        progressBar.style.width = odd + "%"
+        console.log(odd)
+    }
+ }
+ //GAME LOGIC
     const guess = Number(inp.value);
     disp.innerHTML = guess
-      disp.innerHTML = guess;
-  inp.value = "";
+    inp.value = "";
 
 
     if(guess < 1 || guess > 100){
@@ -43,6 +72,7 @@ function guesser(){
     }
     else if(guess === rand){
         guesser()
+        progressBar.style.width = "100%"
         disp.style.backgroundColor = "yellowgreen"
         decl.innerHTML = "CORRECT GUESS!"
          fireConfetti() 
@@ -62,6 +92,8 @@ function guesser(){
         setTimeout(() => {
             disp.classList.remove("shake");
         }, 900);
+        upperLimit = guess
+        oddDiv()
         inp.focus()
     }
         else if(guess < rand){
@@ -72,11 +104,12 @@ function guesser(){
         setTimeout(() => {
             disp.classList.remove("shake");
         }, 900);
+        lowerLimit = guess
+        oddDiv()
         inp.focus()
     }
-    else{
-        return
-    }
+
+
 
     if(tries === 0 && guess !== rand){
         inp.disabled = true
@@ -91,6 +124,7 @@ else{
 }
 
 });
+
 inp.addEventListener("keypress", function(e) {
     if (e.key === "Enter") {
         butt.click();
